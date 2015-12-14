@@ -79,7 +79,7 @@ class QuerySetSelectField(SelectFieldBase):
 
     def pre_validate(self, form):
         if not self.allow_blank or self.data is not None:
-            if not self.data:
+            if not isinstance(self.data, list) and not self.data:
                 raise ValidationError(_(u'Not a valid choice'))
 
     def _is_selected(self, item):
